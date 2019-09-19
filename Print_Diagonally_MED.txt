@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Rishabh {
+
+    public static void printDia(int a[][], int r, int c) {
+        if (r < 0 || c < 0) {
+            return;
+        }
+        if (r > a.length-1 || c > a.length -1) {
+            return;
+        }
+
+        else {
+
+            System.out.print(a[r][c]+ " ");
+            a[r][c] = -1;
+            printDia(a, r + 1, c - 1);
+
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+
+        for (int l = 0; l < t; l++) {
+            int n = scan.nextInt();
+            int[][] a = new int[n][n];
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    a[i][j] = scan.nextInt();
+                }
+            }
+
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (a[i][j] != -1) {
+                        printDia(a, i, j);
+                    }
+                }
+            }
+
+
+        }
+    }
+}
